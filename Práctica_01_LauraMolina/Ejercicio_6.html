@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+
+<body>
+    <script>
+       
+        function generarFecha1Aleatoria() {
+            //la variable actual nos devolverá la fecha de hoy:
+            let actual = Date.now();
+            //60 días en milisegundos
+            let siguiente = 60 * 24 * 60 * 60 * 1000;
+            let fechams = Math.floor(Math.random() * siguiente) + actual;
+            //Convertimos fechams a una fecha real:
+            let fecha = new Date(fechams);
+            return fecha;
+        }
+
+        function generarFecha2Aleatoria() {
+            //la variable actual nos devolverá la fecha de hoy:
+            let actual = Date.now();
+            //13 meses en milisegundos
+            let siguiente = 13 * 30 * 24 * 60 * 60 * 1000;
+            let fechams = Math.floor(Math.random() * siguiente) + actual;
+            let fecha = new Date(fechams);
+            return fecha;
+        }
+
+        //Ahora declaramos dos variables y metemos en ellas las fechas aleatorias:
+        let fechaAleatoria1 = generarFecha1Aleatoria();
+        let fechaAleatoria2 = generarFecha2Aleatoria();
+
+        function calcularDias(f1, f2) {
+            //Primero obtenemos los días que hay entre una fecha y otra. 
+            let diferencia = f1.valueOf() - f2.valueOf(); //estas son las fechas transformadas a milisegundos
+            //Obtenemos la diferencia entre los dos números y la dividimos entre los milisegundos contenidos en un día:
+            let diasDiferencia = Math.abs(diferencia / 86400000); //esto es la diferencia de días
+            return Math.round(diasDiferencia);
+        }
+
+        //Imprimimos las fechas generadas aleatoriamente
+        document.write(fechaAleatoria1);
+        document.write("<br>" + fechaAleatoria2);
+
+        let diasTotales = calcularDias(fechaAleatoria1, fechaAleatoria2);
+        let diasRestantes = Math.round(Math.abs(diasTotales % 30.44));
+        
+        if (diasTotales < 30.44) {
+            document.write("<br>" + "Días: " + diasRestantes);
+        }
+
+        let meses = Math.round(Math.abs(diasTotales / 30.44));
+        let mesesRestantes = Math.round(Math.abs(meses % 12));
+
+        if (diasTotales >= 30.44 && meses < 12) {
+            document.write("<br>" + "Meses: " + mesesRestantes + " Días: " + diasRestantes);
+        }
+        
+        let years = Math.round(Math.abs(diasTotales / 365));
+        let yearsRestantes = Math.round(Math.abs(years % 365));
+
+        if (mesesRestantes >= 12 && diasRestantes < 30.44) {
+            mesesRestantes = 0;
+            document.write("<br>" + "Años: " + yearsRestantes + " Meses: " + mesesRestantes + " Días: " + diasRestantes);
+        }
+
+        if (mesesRestantes >= 12 && diasRestantes >= 30.44) {
+            document.write("<br>" + "Años: " + yearsRestantes + " Meses: " + mesesRestantes + " Días: " + diasRestantes);
+        }
+    //document.write("<br>" + "Años: " + years + " Meses: " + meses + " Días: " + diasRestantes);
+
+    </script>
+
+</body>
+
+</html>

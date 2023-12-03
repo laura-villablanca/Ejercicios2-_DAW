@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <script>
+        //Pedimos frase por pantalla
+        let frase = prompt("Introduce una cadena: ");
+        function invertirCadena() {
+            //Inicializamos una variable en la cual transformamos la frase en un array en la cual separamos todas las letras y valores.
+            let arrayLetras = frase.split('');
+            //Ahora invertimos los elementos del array de letras y devolvemos la frase invertida.
+            let arrayInvertido = arrayLetras.reverse();
+            //Ahora en la variable fraseInvertida metemos el arrayInvertido.join para juntar los elementos del array.
+            let fraseInvertida = arrayInvertido.join("");
+            //Y devolvemos la frase
+            return fraseInvertida;
+        }
+        document.write(invertirCadena());
+    </script>
+</body>
+
+</html>

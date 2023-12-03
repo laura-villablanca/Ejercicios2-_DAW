@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+    <script>
+
+        function mismasLetras(array) { //["hola", "Ahlo"]
+            let iguales;
+            //Sacamos las cadenas del array que entra por parametro
+            let cad1 = array.shift(); //"Hola"
+            let cad2 = array.shift(); //"Ahlo"
+
+            //Declaramos dos variables en las cuales se agreguen las cadenas convertidas a minúsculas para que no distinga entre minúsculas y mayúsculas.
+            cad1 = cad1.toLowerCase(); //"hola"
+            cad2 = cad2.toLowerCase(); //"ahlo"
+
+            //Guardamos en 2 arrays las dos cadenas
+            let array1 = cad1.split("");//["h","o","l","a"]
+            let array2 = cad2.split("");//["a","h","l","o"]
+            
+
+            for (let i = 0; i < array2.length; i++) {
+                for (let j = 0; j < array1.length; j++) {
+                    //Si la letra evaluada de array2 se encuentra en el array1
+                    if(array2[i] == array1[j]) {
+                        iguales = true;
+                        break;
+                    } else {
+                        iguales = false;
+                    }
+                }
+                if(!iguales) return false;
+            }
+            return true;
+            
+        }
+
+        document.write(mismasLetras(['tal', 'lat']));
+
+    </script>
+</body>
+
+</html>

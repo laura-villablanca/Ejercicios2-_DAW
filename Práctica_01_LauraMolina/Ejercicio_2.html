@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    <script>
+        //En primer lugar, pedimos la frase
+        let frase = prompt("Introduce la frase: ");
+        //Declaramos la función en la que vamos a evaluar la palabra más larga.
+        function palabraMasLarga() { 
+            //Declaramos un array en el cual guardamos la transformación de la frase en un array. De esta manera podremos recorrer el array en forma de palabras.
+            let arrayPalabras = frase.split(" ");
+            //Inicializamos a continuación una variable en la cual se le pasa array de palabras.reduce para transformar los valores del array en un sólo valor.
+            //Se pasa a .reduce dos argumentos, los cuales se comparan sus longitudes y la que es mayor es la palabra que retorna.
+            let maxCadena = arrayPalabras.reduce((a, b) => (b.length > a.length) ? b : a);
+
+            return maxCadena;
+        }
+        //Llamamos a la función
+        document.write(palabraMasLarga());
+    </script>
+</body>
+
+</html>

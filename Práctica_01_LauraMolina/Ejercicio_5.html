@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+    <script>
+        let fecha1, fecha2;
+        //Pedir Fecha 
+        function pedirFecha() {
+            do {
+                //Primero pedimos la fecha y la guardamos en formato new Date.
+                let stringFecha = prompt("Introduce fecha con el siguiente formato: (yyyy/mm/dd): ");
+                let fecha = new Date(stringFecha);
+                //Si fecha NO es Invalid Date me devuelve la fecha y para el bucle. Si es inválida me vuelve a preguntar.
+                if (fecha != "Invalid Date" && fecha.getTime != isNaN) { //.getTime me devuelve la fecha en milisegundos.
+                    return fecha;
+                } else {
+                    continue;
+                }
+            } while (true);
+        }
+
+        function devolverDias(f1, f2) {
+            //1 dia son 86400000 milisegundos
+            //Primero restamos las dos fechas (sus milisegundos) y lo dividimos entre 1 día para convertirlo a días.
+            let dias = Math.abs((f1 - f2) / 86400000); //el resto de esto son los días
+            //Ahora debemos pasar estos días a horas minutos y segundos también:
+            let horas = Math.round((dias / 24) * 100, 1);
+            let minutos = Math.round((horas / 60) * 1000, 1);
+            let segundos = Math.round((minutos / 60) * 10000, 1);
+
+            return "Han pasado " + dias + " días, " 
+                    + horas + " horas, " 
+                    + minutos + " minutos y " 
+                    + segundos + " segundos entre las dos fechas.";
+        }
+
+        //Metemos en las variables fecha1 y fecha2 la función pedirFecha para que guarde las fechas introducidas.
+        fecha1 = pedirFecha();
+        fecha2 = pedirFecha();
+        //Llamamos a la función devolver días y imprimimos los días, horas, minutos y segundos de diferencia
+        document.write(devolverDias(fecha1, fecha2));
+
+        //Otra forma
+        d2 = "2023/19/10";
+        new Date(d2); //Invalid Date
+        nd = d2.split("/");
+        new Date(nd[0], nd[2]-1, nd[2]);
+        
+    </script>
+</body>
+
+</html>
