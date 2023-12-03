@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contar Cosas</title>
+  </head>
+  <body>
+    <script>
+      const frutas = [
+        "platano",
+        "fresa",
+        "kiwi",
+        "fresa",
+        "platano",
+        "melón",
+        "manzana",
+        "manzana",
+        "platano",
+      ];
+
+      const frutas0 = frutas.reduce((acc, v) => {
+        acc[v] = (acc[v] || 0) + 1;
+        return acc;
+      }, {});
+
+      const arrayProperties = Object.keys(frutas0); //convertimos a array de propiedades
+      const arrayValues = Object.values(frutas0); //convertimos a array de valores
+      const propiedadesOrdenadas = arrayProperties.sort();
+      const valoresOrdenados = arrayValues.sort();
+    </script>
+  </body>
+</html>

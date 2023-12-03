@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Escribe una función que divida un array en grupo de un tamaño determinado y los devuelva en un 
+        array bidimensional.
+        */
+        let numeroElementos = Number(prompt("Introduce número de elementos: "));
+        let arrayPrincipal = [1, 2, 3, 4, 5, 6];
+        let arrayBidimensional = new Array(numeroElementos);
+        //let arrayCero = new Array(numeroElementos), arrayUno = new Array(numeroElementos);
+        arrayBidimensional[0] = arrayPrincipal.slice(0, numeroElementos);
+        arrayBidimensional[1] = arrayPrincipal.slice(numeroElementos, arrayPrincipal.length);
+        arrayPrincipal = "[" + arrayBidimensional[0] + "]" + "[" + arrayBidimensional[1] + "]";
+
+        alert(arrayPrincipal);
+    
+    </script>
+</body>
+
+</html>

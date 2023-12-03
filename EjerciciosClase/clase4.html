@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        let m = new Map([["nombre", "Juan"],["nombre", "Ana"]]);
+        let o = m.set(1, "Uno"); //1 => Uno
+        
+        for ([k,v] of m) {
+            console.log(k, v); //imprime la clave y el valor
+        }
+
+        m.forEach((value, key, m) => {
+            console.log(value, key, m); 
+        });
+
+        //m.clear(); //borra todo lo que tiene map dentro.
+
+        m2 = [...m]; //imprime los valores en un array de arrays
+        s=[...new Set([...'cadena'])]; //s imprime un array de: ['c','a','d','e','n']
+        //EL OPERADOR SPREAD (...dato) CONVIERTE CUALQUIER COSA EN UN ARRAY
+        
+        function contador() {
+            let n=0
+            return {
+                contar: function() {return n++},
+                reset: n=0
+            }
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 Mejorado</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Escribe una función que divida un array en grupo de un tamaño determinado y los devuelva en un 
+        array bidimensional.
+        */
+        /*let numeroElementos, longitudArray;
+        numeroElementos = Number(prompt("Introduce número de elementos: "));
+        longitudArray = Number(prompt("Introduce longitud del array: "));
+
+        let arrayPrincipal = new Array(longitudArray);
+        let arrayBidimensional = new Array(Math.ceil(longitudArray/numeroElementos)); //La función Math.ceil() devuelve el entero mayor o igual más próximo a un número dado.
+
+
+        for (let i = 0; i < arrayPrincipal.length; i++) {
+            arrayPrincipal[i] = Number(prompt("Introduce " + (i + 1) + "º elemento del array: "));
+        }
+
+        for (let i = 0; i < arrayPrincipal.length; i+=numeroElementos) {
+            arrayBidimensional[Math.floor(i / numeroElementos)] = "[" + arrayPrincipal.slice(i, i + numeroElementos) + "]"; //Math.floor redondea
+        }*/
+
+        //-------------------------------------------------------2º forma ------------------------------------------------
+        let arrayPrincipal = [];
+        let numeroElementos = Number(prompt("Introduce número de elementos: "));
+
+        function dividirGrupos() {
+            let resultado = [];
+            for (let i = 0; i < arrayPrincipal.length; i += numeroElementos) {
+                resultado.push(arrayPrincipal.slice(i, i + numeroElementos)); //Math.floor redondea
+            }
+            return resultado;
+        }
+
+        arrayPrincipal = [1, 2, 3, 4, 5, 6, 7, 8];
+        let dividir = dividirGrupos();
+        console.log(dividir);
+
+
+    </script>
+</body>
+
+</html>

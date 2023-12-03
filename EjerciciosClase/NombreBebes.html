@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre de bebés</title>
+    <script src="nomnac21.js"></script>
+</head>
+
+<body>
+    <script>
+        function limpiar(dato) { return dato.trim() } //limpiamos los espacios en blanco
+        function noVacios(dato) { return dato !== "" } //si son espacios en blanco no me los cuenta con .filter.
+        function separarGeneros(datos) { return datos.split(';;') } //separamos niños y niñas
+        const datos = nombres
+            .split('\n') //separa los saltos de línea
+            .map(limpiar) //itera y recorre todo la limpiarlo con el .trim
+            .filter(noVacios) //no me cuenta los espacios en blanco
+            .map(separarGeneros) //me separa por niño o niña
+
+        const niños = datos.map(dato => dato[0].split(';')); //me recorre el array de los niños
+        const niñas = datos.map(dato => dato[1].split(';').filter(noVacios)); //me recorre el array de las niñas y con filter me quita el tercer componente '' (es decir, no me lo cuenta).
+
+        //Creamos cabecera de objetos
+        const cabecera = ['nombre', 'cantidad', 'sexo'];
+        /*[
+            {
+                nombre: 'sjd',
+                cantidad: 2,
+                sexo: 'niño'
+            },
+            {
+                nombre: 'sjd',
+                cantidad: 2,
+                sexo: 'niño'
+            }
+        ]*/
+
+        //VIERNES
+        
+        const niños_obj = niños.map(elemento => aObjeto(elemento, 'niño')); //recorremos los niños y cada elemento va a ser un array de 2.
+        const niñas_obj = niñas.map(elemento => aObjeto(elemento, 'niña'));
+        //acc es un objeto
+        function aObjeto(elemento, sexo) {
+            //e es el nombre y la cantidad y sexo es fijo
+            const obj = elemento.reduce((acc, v, posic) => {
+                //acc.nombre = valor;
+                acc[cabecera[posic]] = v; //en el objeto acc metemos el valor
+                return acc;
+            }, {}); //el valor inicial es un objeto
+            obj[cabecera[2]] = sexo;
+            return obj;
+        }
+
+        //CORRECCIÓN
+        const todos = niños_obj.concat(niñas_obj);
+        /*
+        //-----------------------------------------------------------------------------------------------
+        //NIÑOS
+        const cabeceraNiños = ["niño", "cantidadNiños"];
+
+        function niños_aObjeto(arrNiños) {
+            const obj = arrNiños.reduce((acc, dato, indice) => {
+                acc[cabeceraNiños[indice]] = dato;
+                return acc;
+            }, {});
+            return obj;
+        }
+
+        const niñosObjeto = niños.map(element => niños_aObjeto(element));
+        //-----------------------------------------------------------------------
+        //NIÑAS
+        const cabeceraNiñas = ["niña", "cantidadNiñas"];
+
+        function niñas_aObjeto(arrNiñas) {
+            const obj = arrNiñas.reduce((acc, dato, indice) => {
+                acc[cabeceraNiñas[indice]] = dato;
+                return acc;
+            }, {});
+            return obj;
+        }
+
+        const niñasObjeto = niñas.map(element => niñas_aObjeto(element));
+        //------------------------------------------------------------------------
+        //JUNTAR
+        function añadir(objNiños, objNiñas) {
+            const obj = {};
+            for (let key in objNiños) {
+                obj[key] = objNiños[key];
+            }
+            for (let key in objNiñas) {
+                obj[key] = objNiñas[key];
+            }
+            return obj;
+        }
+
+        const definitivo = niñosObjeto.map((e, i) => añadir(e, niñasObjeto[i]));*/
+
+        /*function devuelveArrayCompleto(a, b) {return a + b};
+        const completo = datos.reduce(devuelveArrayCompleto(niños.join(), niñas.join()), 0);*/
+
+        /*const completo = datos.join(); //me lo concatena todo, por lo tanto es un array de una posición.
+        const arrayCompleto = completo.split(','); //me devuelve un array de 200 posiciones juntando niños y niñas.*/
+
+        const losNombres = (niños.map(dato => dato[0])).concat(niñas.map(dato => dato[0]));
+
+        //const losNombres = datos.reduce(separarGeneros(datos).concat(niños, niñas));
+        for (let i = 0; i < losNombres.length; i++) {
+            document.write(losNombres[i] + "<br>");
+        }
+        document.write("<br>");
+        document.write("ORDENADO ALFABÉTICAMENTE:" + "<br>");
+        document.write("<br>");
+        const arrayOrdenado = losNombres.sort();
+        for (let i = 0; i < arrayOrdenado.length; i++) {
+            document.write(arrayOrdenado[i] + "<br>");
+        }
+
+        //ret: número
+        function cuantosNombres(arr, letra) {
+            //esta función va a devolver cuantos nombres tienen la letra que le pide el porgrama al usuario.
+            /*letra = letra.toLocaleUpperCase(); //Transformamos la letra a mayúscula
+            contador = 0;
+
+            arr.forEach((element) => {
+                if (element.includes(letra)) { contador++ }
+            });
+
+            return contador;*/
+            return arr.filter(e=>e.toUpperCase().includes(letra.toUpperCase())).length;
+        }
+
+        //ret: númeroObjeto
+        function cuantosNombresO(arrObj, campo, letra) {
+            return arr.filter(objeto=>objeto[campo].toUpperCase().includes(letra.toUpperCase())).length;
+        }
+
+        //ret: Array de nombres
+        function nombresQueComienzanPor(arr, letra) {
+            let res = [];
+            letra = letra.toLocaleUpperCase();
+            res = arr.filter((element) => {
+                return element.charAt(0) == letra;
+            });
+
+            return res;
+            //return arr.filter(nombre=>nombre.toUpperCase().startsWith(letra.toUpperCase()));
+        }
+
+        //ret: booleano
+        function estaMiNombre(arr, nombre) {
+            return arr.some(element => element.toLocaleUpperCase() == nombre.toLocaleUpperCase());
+        }
+
+        //ret:número
+        function cuantasVecesApareceLaLetra(arr, letra) {
+            /*let contadorLetras = 0;
+            letra = letra.toLocaleUpperCase();
+
+            arr.forEach((element) => { 
+                let nombre = element.split('');
+                nombre.forEach((element2) => {
+                    if (element2.includes(letra)) { //si el elemento 2 incluye la letra me cuenta las letras de el array nombre.
+                        contadorLetras++;
+                    }
+                })
+            });
+            return contadorLetras;*/
+
+            return arr
+                .join('')
+                .toUpperCase()
+                .split('')
+                //.filter(e => e == letra.toUpperCase()).length;
+                .reduce((acc, e) => (acc + Number(e === letra.toUpperCase())));
+        }
+
+        document.write("Hay " + cuantosNombres(losNombres, 'a') + " nombres con la letra introducida.");
+        document.write("<br>" + "[" + nombresQueComienzanPor(losNombres, 'a') + "]");
+        document.write("<br>" + estaMiNombre(losNombres, "Jose"));
+        document.write("<br>Número de letras: " + cuantasVecesApareceLaLetra(losNombres, 'l'));
+    </script>
+
+</body>
+
+</html>

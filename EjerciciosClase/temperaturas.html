@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const temperaturas = `
+    Fecha;Tmin;Tmax
+               
+    2023/10/20; 20; 33;
+    2023/10/21; 22; 30;
+    2023/10/22; 18; 28;
+    2023/10/23; 20; 30;
+
+    2023/10/24;; 35;
+    2023/10/25; 14; 20;
+    2023/10/26; 10; 15
+    2023/10/27; 10; 14;    
+    2023/10/28; 0; 14;   
+    `;
+
+
+
+    function csv2ArrayObjs(datosCSV, sepReg = "\n", sepCampo = ";") {
+      const arrays = csv2Arrays();
+      const cabecera = extraerCampos(arrays);
+      const arrObjetos = convertirAObjs(arrays, cabecera);
+
+      return arrObjetos;
+
+      function csv2Arrays() {
+        return datosCSV
+          .split(sepReg)
+          .map(linea => linea.trim())
+          .filter(linea => linea.length)
+          .map(linea => linea.split(sepCampo)
+            .filter(linea => linea.trim().length))
+          .filter(array => array.length === 3);
+      }
+
+
+      function extraerCampos(array) {
+        return arrays.shift();
+      }
+
+      function convertirAObjs() {
+        function aObjeto(arr) {
+          return arr.reduce((acc, v, i) => {
+            (i != 0) ? acc[cabecera[i]] = Number(v.trim()) : acc[cabecera[i]] = v;
+            return acc;
+          }, {});
+        }
+        return arrays.map(registro => aObjeto(registro));
+      }
+
+    }
+
+    const objsTemp = csv2ArrayObjs(temperaturas);
+    console.dir(objsTemp);
+
+    //Funciones: Tmin_media, Tmax_media, Tmin_min, Tmax_max, ordenar por fechas
+    function media(objs, prop) {
+      return objs.reduce(function (acc, obj) {
+        return Number(obj[prop]) + acc;
+      }) / objs.length;
+    }
+
+    function temperaturaMax_o_Min(objs, tipoTemperatura) {
+      const cabecera = Object.keys(objs[0]);
+      if (tipoTemperatura.toUpperCase() === "MAX") return maxima();
+      if (tipoTemperatura.toUpperCase() === "MIN") return minima();
+      return "No has especificado si quieres la temperatura máxima (MAX) o la mínima (MIN)";
+
+      function minima(prop = cabecera[1]) {
+        const min = objs.reduce((acc, obj) => {
+          if (acc[prop] < obj[prop]) return acc;
+          return obj;
+        });
+        return min[prop];
+      }
+
+      function maxima(prop = cabecera[2]) {
+        const max = objs.reduce((acc, obj) => {
+          if (acc[prop] > obj[prop]) return acc;
+          return obj;
+        });
+        return max[prop];
+      }
+    }
+
+
+
+    function ordenarObjetos(objetos, prop, modo = "ascii", asc = false) {
+      let fun = ordenarAscii;
+
+      if (modo.toLowerCase() === "numero") fun = ordenarNumero;
+      if (modo.toLowerCase() === "fecha") fun = ordenarFecha;
+
+      (asc) ? objetos.sort(fun) : objetos.sort(fun).reverse();
+
+      function ordenarAscii(oA, oB) {
+        if (oA[prop] >= oB[prop]) return 1;
+        return -1;
+      }
+
+      function ordenarNumero(oA, oB) {
+        return oA[prop] - oB[prop];
+      }
+
+      function ordenarFecha(oA, oB) {
+        return new Date(oA[prop]) - new Date(oB[prop]);
+      }
+    }
+
+    /*
+      table
+        thead
+          tr ... th
+        tbody
+          tr ... td
+        tfooter
+          tr ... td
+    */
+    function crearTable(datos) {
+
+      const table = crearNodo("table");
+      table.appendChild(crearHeader(extraerCabecera()));
+      table.appendChild(crearBody());
+      table.appendChild(crearFooter(calcularMedias())); //FALTA POR IMPLEMENTAR
+      return table;
+
+      function extraerCabecera() {
+        return Object.keys(datos[0]);
+      }
+
+      function calcularMedias() {
+        return [];
+      }
+
+      function crearHeader(cabecera) {
+        const thead = crearNodo("thead");
+
+        const tr = crearNodo("tr");
+
+        cabecera.forEach(c => tr.appendChild(crearNodo("th", c)));
+
+        thead.appendChild(tr);
+
+        return thead;
+      }
+
+      function crearBody() {
+        const tbody = crearNodo("tbody");
+
+        datos.forEach(fila => {
+          const tr = crearNodo("tr");
+          for (k in fila) {
+            tr.appendChild(crearNodo("td", fila[k]));
+          };
+          tbody.appendChild(tr);
+        });
+
+        return tbody;
+      }
+
+      function crearFooter(datos) {
+        const tfooter = crearNodo("tfooter");
+        const tr = crearNodo("tr");
+        cabecera.forEach(c => tr.appendChild(crearNodo("td", c)));
+        tfooter.appendChild(tr);
+        return footer;
+      }
+    }
+
+    function crearNodo(etiqueta, contenido) {
+      const nodo = document.createElement(etiqueta);
+      if (contenido) {
+        const txt = document.createTextNode(contenido);
+        nodo.appendChild(txt);
+      }
+
+      return nodo;
+    }
+
+
+  </script>
+</body>
+</html>

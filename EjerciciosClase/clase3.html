@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        obj = {
+            nombre: "Ana",
+            apellidos: "Nadie",
+            rol: "Desconocido",
+            direccion: {
+                calle : "Villablanca",
+                ciudad : "Madrid"
+            }
+        }
+        let {nombre} = obj //extraemos la propiedad nombre de obj. -> imprime: Ana
+
+        let {direccion:dir} = obj //extraemos las propiedades y valores del objeto direccion.
+
+        let {color = "rojo"} = obj //No agrega esta prop y valor al objeto, sólo lo lee.
+
+        fn = () => {return {tmin:0, tmed:10, tmax:20}}
+
+        let {direccion:{calle}} = obj //calle 'Villablanca'
+
+        let {direccion:{calle:{numero='desconocido'}}} = obj
+
+        /*IMPORTANTE*/
+        catalogo = [{
+            titulo: "DIW",
+            descripcion: "yo que se",
+            libros: [
+                {
+                    autor: "Tom",
+                    precio: 30
+                }
+            ]
+        }]
+
+        let [{titulo}] = catalogo //DIW
+        let [{libros:[{autor}]}] = catalogo
+
+        a = [1,2,3,4,5,6,7,7,7,8,9,10]
+        s=new Set(...a) //te imprime los valores No repetidos
+    </script>
+  </body>
+</html>

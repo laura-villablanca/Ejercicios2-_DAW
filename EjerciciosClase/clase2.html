@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*operador spread: recorre el array y separa cada uno de los elementos*/
+      array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      console.log(...array);
+      /*funciones flecha: asignadas a una variable*/
+      suma = (num1, num2) => {
+        return num1 + num2;
+      };
+      sumaSinReturn = (num1, num2) => num1 + num2;
+      /*Convertir una estructura compleja en una estructura sencilla*/
+      a = array[0]; /*1*/
+      const [x, y, z] = array; /*x=1, y=2, z=3*/
+      /*utilizamos var para no tener que refrescar la página*/
+      var [a] = array;
+      var [a, ...b] = array; /*b = [2, 3, 4, 5, 6, 7, 8, 9, 10]*/
+
+      var miFn = () =>
+        ([0, 10, 20][(tmin, tmed, tmax)] = miFn[
+          /*tmin: 0
+          tmed: 10
+          tmax: 20*/
+
+          /*Intercambiar valores*/
+          (a, b)
+        ] =
+          [b, a]);
+    </script>
+  </body>
+</html>

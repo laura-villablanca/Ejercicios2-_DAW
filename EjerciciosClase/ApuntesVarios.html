@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Cada una de las siguientes opciones crean un objeto vacío
+        var objetoNuevo = {};
+        var objetoNuevo = Object.create(Object.prototype);
+        var objetoNuevo = new Object();
+
+        var usuario = {
+            nombre: "Pedro",
+            edad: 20,
+            empresa: {
+                nombre: "ESPE, S.A.", 
+                id: 1234
+            }
+        };
+
+        //Valores de las propiedades: atajos
+        function unUsuario(nombre, edad) {
+            return {
+                nombre:nombre,
+                edad:edad
+            }
+        }
+        //o bien se puede hacer
+        function unUsuario(nombre, edad) {
+            return {
+                nombre,
+                edad
+            }
+        }
+        //operaciones
+        var bibliotecaMath = {
+            suma: function(a,b) {return a + b; },
+            multiplica: function(a,b) {return a * b; }
+        }
+
+        var bibliotecaMath = {
+            suma (a,b) {return a + b; },
+            multiplica (a,b) {return a * b; }
+        }
+
+        console.log(bibliotecaMath.suma(5, 6)); //11
+
+        //this
+        function Coche(modelo) {
+            this.numRuedas = 4;
+            this.kilometros = 0;
+            this.modelo = modelo;
+        }
+
+        var miCoche = new Coche("Fomentera");
+        console.log(miCoche);
+        //var miCoche = Coche("Fomentera"); -> apunta al ámbito/entorno global.
+
+        //typeof -> comprueba si un valor es un elemento de tipo primitivo
+        typeof valor === 'string';
+        //instanceof -> 
+
+        //Métodos de objetos
+        var colors = {rojo: 'red', verde: 'green', amarillo: 'yellow'}
+        Object.values(colors); //['red', 'green', 'yellow']
+        Object.keys(colors); //['rojo','verde','amarillo']
+        Object.entries(colors); //[['rojo','red'],['verde','green'],['amarillo','yellow']]
+        Object.hasOwnProperty(colors); //
+        Object.defineProperty(miCoche, "modelo", {configurable: false});
+        Object.defineProperty(miCoche, "modelo", {enumerable: false}); //indica si es privada o pública
+        //si queremos saber si la propiedad existe:
+        if (bahias in miOrdenador) {
+            //código
+        }
+        //
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,93 @@
+4<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Desarrollar al menos tres formas distintas de encontrar el valor más alto de un array numérico
+        (enteros + y -). Implementa cada una de ellas en una función diferente.
+        */
+
+        //1º forma
+        let longitud = Number(prompt("Introduce longitud del array: "));
+        let array = new Array(longitud);
+        let valorMasAlto;
+
+        function esMayor(valor1, valor2) {
+            return valor1 > valor2;
+        }
+
+        function pedirValores() {
+            for (let i = 0; i < array.length; i++) {
+                array[i] = Number(prompt("Introduce " + (i + 1) + "º valor del array: "));
+            }
+        }
+
+        function calcularValorAlto() {
+            valorMasAlto = array[0];
+
+            for (let i = 1; i < array.length; i++) {
+                if (esMayor(array[i], valorMasAlto)) { //de esta manera siempre me compara array de i con el primer elemento del array
+                    valorMasAlto = array[i];
+                } else {
+                    valorMasAlto = array[i + 1];
+                }
+            }
+            return valorMasAlto;
+        }
+
+        pedirValores();
+        calcularValorAlto();
+        alert("El valor más alto es " + valorMasAlto);
+
+        //------------------------------------------------------------------------------------------------------------------------------
+
+        //2º forma
+
+        function calcularValorAlto2() {
+            valorMasAlto = array[array.length - 1];
+
+            for (let i = array[array.length - 2]; i >= 0; i--) {
+                if (esMayor(array[i], valorMasAlto)) {
+                    valorMasAlto = array[i];
+                }
+            }
+        }
+        
+        alert("El valor más alto es " + valorMasAlto);
+
+        //------------------------------------------------------------------------------------------------------------------------------
+
+        //3º forma
+
+        function retornaMayor(array) {
+            array.sort(function (a, b) {
+                return b - a; //11, 5, 2, 1
+            });
+            return array.shift(); // -> me saca el primer valor
+        }
+
+        let valorMasGrande = retornaMayor(array);
+        alert(valorMasGrande);
+
+        //4º forma
+
+        function retornaMayor2(array) {
+            array.sort(function (a, b) {
+                return a - b; //1, 2, 5, 11
+            });
+            return array.pop(); //-> me saca el último valor
+        }
+        let valorMasGrande2 = retornaMayor2(array);
+        alert(valorMasGrande2);
+
+    </script>
+</body>
+
+</html>
