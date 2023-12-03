@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referencias cruzadas</title>
+    <script src="texto.js"></script>
+</head>
+
+<body>
+    <script>
+        function textoEnArrays(separadorFrases='\n', separadorElements="") {
+            const datos = texto
+                        .split(separadorFrases)
+                        .filter(dato => dato != separadorElements)
+                        .map(element => element.split(' '))
+            return datos;
+        }
+
+        const arrayDeArrays = textoEnArrays();
+
+        const arrayUnico = [].concat(...arrayDeArrays);
+
+        const arraySinReps = filtrarPalabras([...new Set(arrayUnico)]); //me transforma a un set, un conjunto, el cual no acepta valores repetidos.
+
+        function crearObjeto(array) {
+            const obj = array.reduce(function(acc, v) {
+                acc[v] = []; //transformamos el array en un objeto el cual sus propiedades son los valores/cadenas y sus valores son un array
+                return acc;
+            }, {});
+            return obj;
+        }
+
+        const objetoTexto = crearObjeto(arraySinReps);
+
+        function addLinesWhereIsValue(matriz, obj) {
+            Object.keys(obj).forEach(prop => {
+                matriz.forEach((array, i) => {
+                    if (array.includes(prop)) {obj[prop].push(i);} 
+                })
+            })
+        }
+
+        function filtrarPalabras(array) {
+            const palabrasFiltradas = array.filter(cadena => cadena.length > 2 && cadena.length <= 10);
+            return palabrasFiltradas;
+        }
+        
+    </script>
+</body>
+
+</html>
