@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <script>
+        /*
+        En este script deberás crear un array para guardar los nombres de los días de la semana, empezando por 0 para el domingo. 
+        Para comprobar el funcionamiento pide al usuario un número entre 0 y 6 y devuelve el nombre del día. 
+        Se supone que el dato tecleado estará entre 0 y 6
+        */
+        let diasSemana = new Array(7), numero;
+
+        do {
+            numero = prompt("Introduce número: (del 0 al 6) ");
+
+            diasSemana[0] = 'Lunes';
+            diasSemana[1] = 'Martes';
+            diasSemana[2] = 'Miércoles';
+            diasSemana[3] = 'Jueves';
+            diasSemana[4] = 'Viernes';
+            diasSemana[5] = 'Sábado';
+            diasSemana[6] = 'Domingo';
+        } while (numero < 0 || numero > 6);
+
+        alert("El día es: " + diasSemana[numero]);
+
+    </script>
+</body>
+
+</html>

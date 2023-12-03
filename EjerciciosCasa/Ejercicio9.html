@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Un servicio de atención al ciente tiene establecido turnos semanales para sus empleados de manera que cada día de la semana se encarga del servicio  
+        una persona: lunes - María, Martes - Luis, Miércoles - Antonia, Jueves - Pedro, Viernes - Marisa.
+        Usa un array para almacenar los datos del servicio. En este array cada elemento será un para día - nombre.
+        Crea una función que responda con el nombre de la persona encargada del servicio sabiendo el día. 
+        Si el día no existe deberá decir que no hay servicio. Los nombres de los días deben ir en minúsculas.
+        */
+        let array = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+
+        function nombre() {
+            let resultado = "";
+            for (let i = 0; i < array.length; i++) {
+                switch (array[i]) {
+                    case 'Lunes':
+                        resultado += array[i] + " - María\n";
+                        break;
+                    case 'Martes':
+                        resultado += array[i] + " - Luis\n";
+                        break;
+                    case 'Miércoles':
+                        resultado += array[i] + " - Antonia\n";
+                        break;
+                    case 'Jueves':
+                        resultado += array[i] + " - Pedro\n";
+                        break;
+                    case 'Viernes':
+                        resultado += array[i] + " - Marisa\n";
+                        break;
+                    default:
+                        alert("Día incorrecto");
+                        break;
+                }
+
+            }
+            return resultado;
+        }
+
+        let darNombres = nombre();
+        alert(darNombres);
+
+
+    </script>
+</body>
+
+</html>

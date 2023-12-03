@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Diseña un script que vaya leyendo números y guardándolos en un array. 
+        Una vez lleno mostrará el array y deberá decir cuantos números son pares y cuantos son impares. La entrada de datos termina cuando el usuario teclea 0 o un valor 
+        no numérico.
+
+        Intenta resolverlo sin usar métodos del objeto array, solo indices y longitudes de arrays.
+
+        No debe aceptar valores no numéricos (isNaN(valor) permite detectar valores no numéricos).
+        */
+        let array = [], numero, pares = 0, impares = 0, contador = 0;
+        do {
+            numero = prompt("Introduce número: ");
+            let num2 = Number(numero);
+            let num3 = parseInt(numero);
+            if (isNaN(num2) || isNaN(num3)) {
+                num2 = NaN;
+            } else {
+                array[contador++] = num2; //va guardando los números en el array
+                console.log(array[contador-1]);
+            }
+        } while (!isNaN(num2) && num2 !== 0); //mientras sea un número me pide de nuevo los datos.
+
+        for (let i = 0; i < array.length; i++) {
+            array[i] % 2 == 0 ? pares++ : impares++;
+        }
+
+        alert("La cantidad de números pares es: " + pares);
+        alert("La cantidad de números impares es: " + impares);
+
+    </script>
+</body>
+
+</html>

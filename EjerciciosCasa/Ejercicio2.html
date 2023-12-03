@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Crea un array booleano con dos valores 'verdadero' y 'falso'. Este array te sirve para traduicr los valores true y false. 
+        Usalo para que el script muestre un alert con el nombre vedadero si un usuario teclea un valor entre 0 y 9 y falso en el caso 
+        contrario.
+        */
+        let arrayBooleano = new Array('verdadero', 'falso'), numero;
+
+        do {
+            numero = Number(prompt("Introduce número: (del 0 al 9) "));
+            if (numero == "") {
+                numero = NaN;
+            }
+            numero = Number(numero);
+        } while (isNaN(numero));
+
+        numero < 0 || numero > 9 ? alert(arrayBooleano[1]) : alert(arrayBooleano[0]);
+
+    </script>
+</body>
+
+</html>

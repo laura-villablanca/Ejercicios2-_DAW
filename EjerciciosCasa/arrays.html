@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+
+<body>
+    <script>
+        let miArray = new Array(); //0
+        let miArry1 = new Array(25);//25 elementos con undefined
+        //Siempre crea un array unidimensional
+        let miArray2 = [];
+        let miArray3 = ['uno', 'dos', 3];//Son valores
+        let miArray4 = miArray(2, 2); //en este caso son dos elementos que tienen valores 2 y 2, es decir:
+        miArray[0] = 2;
+        miArray[1] = 2;
+
+        //Array.from('foo') -> salida Array["f", "o", "o"];
+        //Array.from([1, 2, 3], x => x + x) -> salida: Array[2, 4, 6];
+
+        //un for accede a TODOS los elementos
+        //for ... in -> for (let i in miArray) { console.log(miArray[i]); } //imprime los valores que no son undefined
+        //for ... of -> for (let i of miArray) { console.log(i); } //imprime los valores que no son undefined.
+
+        //concat() -> añade un array
+        let array = [1, 2, 3, 4];
+        array.concat(5, 6, 7);
+        let nuevoArray = array.concat([5, 6, 7]);
+
+        //splice()
+        array.splice(1, 0, 'a', 'b'); // [1, 'a', 'b', 2, 3, 4]; 1 -> posicion desde donde empieza, 0 -> numero de elementos que quiero eliminar y el resto son los elementos a añadir
+        //eliminando
+        array.splice(1, 1, 'a', 'b'); //elimina el 2, que es el número colocado en la posición 1
+        //1, 'a', 'b', 3, 4
+
+        //slice() -> devuelve una copia del array pero no modifica.
+        array.slice(2, 7); //-> start, end
+
+        //reverse() -> invierte el orden de los elementos de una matriz unidimensional
+        //sort() -> ordena los elementos de una matriz unidimensional
+        let arr = [1, 2, 15];
+        arr.sort();
+        alert(arr); //[1, 15, 2] -> lo transforma en cadena y utiliza un método lexicográfico
+
+        //funciones
+        function ordenar(a, b) {
+            return (a-b);//devuelve 1, -1 o 0
+            //si son iguales da 0
+            //si es mayor b da -1
+            //si es mayor a da 1s
+        }
+
+        arr.sort(ordenar);
+
+
+        //reserve -> lo modifica al revés
+
+        //indexOf() -> busca un elemento del array y devuelve su posición. -1 si no lo encuentra.
+        //lasIndexOf() -> igual que el anterior, pero busca de atrás hacia adelante
+        //includes() -> devuelve true si la matriz incluye a elemento, false, si no.
+        //find() -> devuelve el valor del primer elemento del array que cumple la función de prueba proporcionada. En cualquier otro caso devuelve undefined.
+        //findIndex() -> devuelve el índice del primer elemento de un array que cumpla con la función de prueba proporcionada. En caso contrario devuelve -1.
+
+        //join() -> convierte todos los elementos del array en una cadena
+        //arr.join() -> "snk,ddkd,dkndk"
+        //toString() -> convierte cada elemento del array a una cadena. Los elementos estarán separados por comas.
+        //toLocaleString() -> igual, pero teniendo en cuenta el idioma
+
+        //forEach(fn[,ent]), map(fn[,ent]), filter(fn[,ent]), every(fn[,ent]), some(fn[,ent])
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Escribe una función que pueda devolver el valor más pequeño de un array numérico o el índice de ese valor. 
+        El segundo parámetro de la función dirá si debe devolver el valor ("v") o el índice ("i"). No uses métodos del objeto array.
+        Se supone que el primer parámetro siempre será una matriz llena con al menos 1 número y sin duplicados.
+        Se supone el segundo parámetro será una letra con uno de dos valores: 'v' 'i'
+        */
+
+        function min(array, valor) {
+
+            let min = array[0], iMin; //le asignamos a min el valor de la posicion 0
+
+                for (let i = 0; i < array.length; i++) {
+                    if (array[i] < min) { //de esta manera cada número lo compara con el de la posción 0.
+                        min = array[i]; // si encuentra algún número menor, lo guarda como el más pequeño y guarda el valor en min.
+                        iMin = i; //guarda la posición de ese número (el más peque) en la variable iMin
+                    }
+                }
+                return valor === 'v' ? min : iMin; //si es v devuelve el valor más peque y si no lo es devuelve la posición.
+        }
+
+        alert("valor mínimo: " + min([4, 2, 5, 1, 8], 'v'));
+        alert("posición del mínimo: " + min([4, 2, 5, 1, 8], 'i'));
+
+    </script>
+</body>
+
+</html>

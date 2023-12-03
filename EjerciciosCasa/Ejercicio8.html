@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Escribe una función que reciba como argumento un array y que devuelva una cadena de caracteres 
+        formada por los elementos del array separados por un guión.
+        */
+        let array = new Array(5);
+
+        function pedirElementos(array) {
+            for (let i = 0; i < array.length; i++) {
+                array[i] = prompt("Introduce " + (i+1) + "º elemento: ");
+            }
+        }
+
+        function guion(array) {
+
+            let cadena = "";
+            cadena = array[0];
+
+            for (let i = 1; i < array.length; i++) {
+                cadena += "-" + array[i];
+            }
+            return cadena;
+        }
+
+        let pedir = pedirElementos(array);
+        alert(guion(array));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Ordenar array numéricamente (de menor a mayor).
+        */
+        let arrayDesordenado = [10, 7, 4, 3, 2, 1, 6, 8, 9, 5];
+
+        function esMayor(valor1, valor2) {
+            return valor1 > valor2;
+        }
+
+        let ordenar = arrayDesordenado.sort((a, b) => {
+            return a - b;
+        });
+
+        alert(ordenar);
+
+        /*
+        Ordenar un array numéricamente (de mayor a menor).
+        */
+        /*let arrayDesordenado2 = [];
+ 
+        function introducirValores() {
+         for (let i = 0; i < arrayDesordenado2; i++) {
+             arrayDesordenado2[i] = Number(prompt("Introduce " + (i+1) + "º valor: "));
+         }
+        }*/
+
+
+        let orden = arrayDesordenado.sort((a, b) => {
+            return b - a;
+        })
+
+
+        //introducirValores();
+        alert(orden);
+
+    </script>
+</body>
+
+</html>

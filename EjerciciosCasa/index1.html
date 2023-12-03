@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+            var miVar = "global";
+
+            function funcionGlobal() {
+                var miVar = "local";
+                return miVar;
+            }
+
+            document.write(miVar);
+            document.write(funcionGlobal());
+            document.write(miVar);
+
+        </script>
+    </body>
+</html>

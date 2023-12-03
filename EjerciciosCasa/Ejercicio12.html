@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise 12</title>
+</head>
+
+<body>
+    <script>
+        //Hacer una función que reciba letras de elementos y retorne la palabra entera. Es decir, que retorne la misma string transformada de la siguiente forma:
+        //console.log(agregarIndice("kawabonga")); // array = ['s','a','r','a','s','a'] -> 
+        //concatenar imprime "sarasa"
+        let array = [];
+
+        function concatenar(array) {
+            let resultado = "";
+            for (let i = 0; i < array.length; i++) {
+                array[i] === '' ? resultado += ' ' : resultado += array[i];
+            }
+            return resultado;
+        }
+
+        array = new Array('h','e','y','k','a','w','a','b','o','n','g');
+        let arrayConcatenado = concatenar(array);
+        alert("La palabra es: " + arrayConcatenado);
+
+    </script>
+</body>
+
+</html>

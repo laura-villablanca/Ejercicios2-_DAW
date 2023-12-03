@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise 11</title>
+</head>
+
+<body>
+    <script>
+        //Hacer una función que reciba una string y retorne la misma string pero agregando después de cada caracter su í­ndice correspondiente. Es decir, que retorne la misma string transformada de la siguiente forma:
+        //console.log(agregarIndice("kawabonga")); // imprime "k0w1a2b3o4n5g6a7"
+        let palabra = prompt("Introduce palabra: ");
+        let palabra2 = [];
+        for (let i = 0; i < palabra.length; i++) {
+            palabra2 += palabra[i] + i;
+        }
+        alert(palabra2);
+    </script>
+</body>
+
+</html>

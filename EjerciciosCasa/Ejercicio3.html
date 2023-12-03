@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Sin usar métodos del objeto array, diseña una función llamada sumaLista() capaz de sumar todos los números 
+        que forman el array que se le pase como argumento.
+        */
+       let array = new Array(2, 4, 2), suma = 0, resultado;
+        function sumaLista() {
+            for (let i = 0; i < array.length; i++) {
+                suma += array[i];
+            }
+            return suma;
+        }
+
+        alert("El resultado es: " + sumaLista());
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Escribe una función que determina si la letra que se le pasa como argumento se encuentra 
+        contenida dentro de un array de letras que se le pasa como segundo argumento.
+        Se trata de resolverlo sin usar métodos del objeto array, solo el dato tipo array.
+        */
+        let array = [];
+        let letra = prompt("Introduce letra: ");
+
+        function estaDentro(array) {
+            //si al recorrer el array no encuentra la letra escrita por el usuario devuelve false
+            let booleano = false;
+
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === letra) return true;
+            }
+            return booleano;
+        }
+
+        alert(estaDentro(['b', 'c', 'd', 'e']) == false ? "No existe el dato introducido" : "Existe el dato introducido" );
+    </script>
+</body>
+
+</html>
