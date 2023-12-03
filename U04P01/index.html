@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de ciudades</title>
+    <script src="worldcities.js"></script>
+</head>
+
+<body>
+    <script>
+        //a.
+        const ciudades = csvMatriz(datos);
+
+        function csvMatriz(cadenas, separadorRegistros = '\n', separadorCampos = ';') {
+            //Los registros son la ciudad y los datos y los campos cada uno de los campos (nombre y datos numéricos).
+            const array = cadenas.split(separadorRegistros)
+                .map(linea => linea.trim())
+                .filter(linea => linea.length)
+                .map(linea => linea
+                    .split(separadorCampos)
+                    .map(registro => registro.trim())
+                    .filter(registro => registro.length))
+                .filter(linea => linea.length === 11);
+            return array;
+        }
+
+        //b.
+        function extraerCabecera(matriz) {
+            return matriz.shift();
+        }
+
+        //c. 
+        function filtrarPorNumCampo(matriz, numCampo, valor) {
+            const filtro = matriz.filter(function (e) {
+                return e[numCampo] == valor;
+            })
+            return filtro;
+        }
+
+        //const filtering = filtrarPorNumCampo(ciudades, 2, '42,4822');
+
+        //d.
+        function realizarTabla(cab, matriz, caption) {
+            document.write("<table border='1px solid black'>");
+            //caption
+            document.write("<caption>");
+            document.write(caption);
+            document.write("</caption>");
+            //Cabecera
+            document.write("<tr>");
+            cab.forEach(registro => document.write("<th>" + registro + "</th>"));
+            document.write("</tr>");
+            //Matriz
+            matriz.forEach(arr => {
+                document.write("<tr>");
+                arr.forEach(cadena => document.write("<td>" + cadena + "</td>"));
+                document.write("</tr>");
+            });
+
+            document.write("</table>");
+        }
+
+        let cabecera = extraerCabecera(ciudades);
+        realizarTabla(cabecera, ciudades, "Tabla de ciudades");
+
+        //e.
+        function ordenarPorCampo(matriz, campo) {
+            return matriz.sort(function (a, b) { a[campo] > b[campo] ? 1 : -1 });
+        }
+    </script>
+</body>
+
+</html>
